@@ -1,0 +1,7 @@
+pl\majorczyk\config\AppConfig$1.class
+pl\majorczyk\SpringDiApplication.class
+pl\majorczyk\beans\NamesRepository.class
+pl\majorczyk\config\DatabaseDatasource.class
+pl\majorczyk\config\profiles\ProdProfile.class
+pl\majorczyk\config\AppConfig.class
+pl\majorczyk\config\profiles\DevProfile.class
