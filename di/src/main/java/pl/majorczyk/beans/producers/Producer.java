@@ -18,6 +18,6 @@ public @interface Producer {
     ProducerType type();
 
     public enum ProducerType{
-        SIMPLE,COMPLEX;
+        SIMPLE,COMPLEX
     }
 }
