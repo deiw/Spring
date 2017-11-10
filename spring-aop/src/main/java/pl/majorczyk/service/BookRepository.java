@@ -1,0 +1,45 @@
+package pl.majorczyk.service;
+
+import org.springframework.stereotype.Component;
+import pl.majorczyk.model.Book;
+
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Random;
+
+@Component
+public class BookRepository implements GenericRepository<String,Book> {
+
+    private List<Book> books;
+
+    public BookRepository() {
+        books=new LinkedList<>();
+    }
+
+    @Override
+    public Book get(String isbn) {
+        if(isbn==null||(isbn.length()!=13))
+            throw new IllegalArgumentException("You have to provide valid isbn number");
+         Book book=books.stream()
+                .filter(b->isbn.equals(b.getIsbn()))
+                .findFirst()
+                .get();
+         randomPause(400);
+        return book;
+    }
+
+    @Override
+    public void add(Book book) {
+       if(book==null||book.getIsbn()==null||book.getTitle()==null||book.getAuthor()==null)
+           throw new IllegalArgumentException("Book cannot have null fields");
+       randomPause(1000);
+        books.add(book);
+    }
+    private void randomPause(int delay){
+        try {
+            Thread.sleep(new Random().nextInt(delay));
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
+}
