@@ -21,7 +21,7 @@ public class SpringApplication {
 
         Book book=repo.get("1234567890123");
         System.out.println(book);
-        //Book error=repo.get("123");
+        Book error=repo.get("123");
         ctx.close();
     }
 }
