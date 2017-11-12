@@ -1,15 +1,43 @@
 package pl.majorczyk.config;
 
+import org.apache.commons.dbcp2.BasicDataSource;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.orm.jpa.LocalEntityManagerFactoryBean;
+import org.springframework.orm.jpa.JpaVendorAdapter;
+import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
+import org.springframework.orm.jpa.vendor.Database;
+import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
+
+import javax.sql.DataSource;
+
 
 @Configuration
 public class JpaConfig {
     @Bean
-    public LocalEntityManagerFactoryBean createEMF(){
-        LocalEntityManagerFactoryBean emf=new LocalEntityManagerFactoryBean();
+    public LocalContainerEntityManagerFactoryBean createEMF(JpaVendorAdapter adapter, DataSource ds){
+        LocalContainerEntityManagerFactoryBean emf=new LocalContainerEntityManagerFactoryBean();
         emf.setPersistenceUnitName("spring-jpa-pu");
+        emf.setDataSource(ds);
+        emf.setJpaVendorAdapter(adapter);
+        emf.setPackagesToScan("pl.majorczyk.model");
         return emf;
     }
+    @Bean
+    public JpaVendorAdapter createVendorAdapter(){
+        HibernateJpaVendorAdapter adapter=new HibernateJpaVendorAdapter();
+        adapter.setDatabase(Database.MYSQL);
+        adapter.setShowSql(true);
+        return adapter;
+    }
+    @Bean
+    public DataSource createDS(){
+        BasicDataSource ds=new BasicDataSource();
+        ds.setUrl("jdbc:mysql://localhost:3306/library");
+        ds.setUsername("root");
+        ds.setPassword("admin");
+        ds.setDriverClassName("com.mysql.jdbc.Driver");
+        ds.setInitialSize(5);
+        return ds;
+    }
 }
+
