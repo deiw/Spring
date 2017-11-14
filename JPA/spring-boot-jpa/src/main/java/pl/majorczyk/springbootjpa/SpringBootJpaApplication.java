@@ -11,8 +11,26 @@ public class SpringBootJpaApplication {
 
 	public static void main(String[] args) {
 	 ConfigurableApplicationContext ctx= SpringApplication.run(SpringBootJpaApplication.class, args);
-		BookDao dao=ctx.getBean(BookDao.class);
-		dao.save(new Book("123","Cloud Atlas","David Mitchell"));
-		System.out.println("book saved");
+		
+		// CREATE
+		BookDao dao = ctx.getBean(BookDao.class);
+		Book book = new Book("1234567890468", "Cloud Atlas", "David Mitchell");
+		dao.save(book);
+		System.out.println(book);
+
+		// UPDATE
+		Book book2 = new Book("987654321", "Universe in your hand", "Christophe Gallard");
+		book2.setId(1L);
+		dao.update(book2);
+		System.out.println(book2);
+
+		// READ
+		Book findBook = dao.get(1L);
+		System.out.println(findBook);
+
+		// DELETE
+		dao.remove(1L);
+		Book book3 = dao.get(1L);
+		System.out.println(book3); //null
 	}
 }
