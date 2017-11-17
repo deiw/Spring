@@ -29,4 +29,8 @@ public abstract class GenericDao<T,K> {
         T obj=em.find(type,id);
         return obj;
     }
+    public void remove(T entity){
+        T obj=em.merge(entity);
+        em.remove(obj);
+    }
 }

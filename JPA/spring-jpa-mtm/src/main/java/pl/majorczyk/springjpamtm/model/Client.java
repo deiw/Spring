@@ -2,6 +2,7 @@ package pl.majorczyk.springjpamtm.model;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -16,14 +17,21 @@ public class Client implements Serializable {
     private String firstName;
     @Column(name = "surname",nullable = false)
     private String surName;
-    @OneToMany(mappedBy = "client",fetch = FetchType.EAGER)
-    private List<Order> orders;
+    @OneToMany(mappedBy = "client",
+            fetch = FetchType.EAGER,
+            cascade = {CascadeType.PERSIST,CascadeType.REMOVE},
+            orphanRemoval = true)
+    private List<Order> orders=new ArrayList<>();
 
     Client(){}
 
     public Client(String firstName, String surName) {
         this.firstName = firstName;
         this.surName = surName;
+    }
+    public void addOrder(Order order){
+        order.setClient(this);
+        getOrders().add(order);
     }
 
     public Long getId() {
