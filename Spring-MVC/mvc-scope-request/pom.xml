@@ -4,11 +4,11 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>pl.majorczyk</groupId>
-	<artifactId>spring-mvc-scope-request</artifactId>
+	<artifactId>mvc-scope-request</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>war</packaging>
 
-	<name>spring-mvc-scope-request</name>
+	<name>mvc-scope-request</name>
 	<description>Demo project for Spring Boot</description>
 
 	<parent>
