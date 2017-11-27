@@ -4,11 +4,11 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>pl.majorczyk</groupId>
-	<artifactId>spring-mvc-scope-session</artifactId>
+	<artifactId>mvc-scope-session</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>war</packaging>
 
-	<name>spring-mvc-scope-session</name>
+	<name>mvc-scope-session</name>
 	<description>Demo project for Spring Boot</description>
 
 	<parent>
