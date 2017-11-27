@@ -4,11 +4,11 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>pl.majorczyk</groupId>
-	<artifactId>spring-boot-di</artifactId>
+	<artifactId>spring_boot_di</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
-	<name>spring-boot-di</name>
+	<name>spring_boot_di</name>
 	<description>Demo project for Spring Boot</description>
 
 	<parent>
