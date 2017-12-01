@@ -29,7 +29,8 @@ public class HomeController {
     public String add(@ModelAttribute User user, RedirectAttributes redirectAttributes){
         Errors errors=userService.addUser(user);
         if(!errors.hasErrors()) redirectAttributes.addFlashAttribute("success","User added successfully!");
-        else redirectAttributes.addFlashAttribute("errors",errors);
+        else redirectAttributes.addFlashAttribute("errors",
+                errors.getAllErrors().stream().map(DefaultMessageSourceResolvable::getDefaultMessage).toArray());
         return "redirect:/";
     }
 }
