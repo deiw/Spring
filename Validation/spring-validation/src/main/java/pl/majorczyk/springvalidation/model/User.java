@@ -8,6 +8,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.validation.constraints.Size;
 
+import pl.majorczyk.springvalidation.constraint.Password;
+
 @Entity
 public class User {
 
@@ -16,7 +18,7 @@ public class User {
     private Long id;
     @Size(min = 2,max = 10)
     private String username;
-    @Size(min = 5,max = 10)
+    @Password(min = 5,max = 10)
     private String password;
     @Email
     private String email;
